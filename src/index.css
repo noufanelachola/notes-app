@@ -25,12 +25,15 @@ button:focus {
 
 .sidebar {
   width: 20%;
-  height: 100vh;
+  /* height: 100vh; */
+  border: 0.1rem solid #4A4E74;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
 }
 
-.sidebar--note {
+/* .sidebar--note { */
   /* display: flex; */
-}
+/* } */
 
 .sidebar--header {
   display: flex;
@@ -73,6 +76,12 @@ button:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.title:hover{
+  background-color: rgb(107, 111, 148);
+}
+.title:hover > h4 {
+  color: white;
 }
 
 .title--delete {
