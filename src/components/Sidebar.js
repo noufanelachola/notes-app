@@ -1,6 +1,15 @@
 import React from "react"
+import Showdown from "showdown"
 
 export default function Sidebar(props) {
+
+    function markDownToText(markdown) {
+        const converter = new Showdown.Converter();
+        const html = converter.makeHtml(markdown);
+        const plainText = html.replace(/<[^>]*>/g, '');
+        return plainText;
+    }
+
     const noteElements = props.notes.map((note, index) => (
         <div key={note.id}>
             <div
@@ -10,7 +19,9 @@ export default function Sidebar(props) {
                 }`}
                 onClick={() => props.setCurrentNoteId(note.id)}
             >
-                <h4 className="text-snippet">{note.body.split("\n")[0]}</h4>
+                <h4 className="text-snippet">
+                    {markDownToText(note.body.split("\n")[0])}
+                </h4>
             </div>
         </div>
     ))
