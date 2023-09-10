@@ -47,7 +47,7 @@ export default function App() {
     
     function updateNote(text) {
         setNotes(oldNotes => {
-            const newNotes = [];
+            let newNotes = [];
             for(let i=0; i < oldNotes.length; i++){
                 const oldNote = oldNotes[i];
                 if(oldNote.id === currentNoteId){
@@ -66,6 +66,14 @@ export default function App() {
         }) || notes[0]
     }
     
+    function deleteFn(noteId,event) {
+        console.log(noteId , "Deleted");
+        setNotes((oldNotes) => {
+            return oldNotes.filter((oldNote) => oldNote.id !== noteId)
+        })
+        event.stopPropagation();
+    }
+
     return (
         <main>
         {
@@ -81,6 +89,7 @@ export default function App() {
                     currentNote={findCurrentNote()}
                     setCurrentNoteId={setCurrentNoteId}
                     newNote={createNewNote}
+                    delete={deleteFn}
                 />
                 {
                     currentNoteId && 

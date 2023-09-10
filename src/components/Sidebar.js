@@ -22,6 +22,7 @@ export default function Sidebar(props) {
                 <h4 className="text-snippet">
                     {markDownToText(note.body.split("\n")[0])}
                 </h4>
+                <button onClick={(event) => props.delete(note.id,event)}>Delete</button>
             </div>
         </div>
     ))
